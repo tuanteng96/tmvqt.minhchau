@@ -20,7 +20,6 @@ import {
 import ListService from "./components/Service/ListService";
 import SlideList from "../home/components/BannerSlide/SlideList";
 import ServiceHot from "./components/ServiceHot/ServiceHot";
-import { HIDE_STATUSBAR } from "../../constants/prom21";
 const ListImage = React.lazy(() =>
   import("../home/components/Customer/ListImage")
 );
@@ -184,6 +183,11 @@ export default class extends React.Component {
                 BannerName="App.Main"
                 autoplaySpeed={4000}
               />
+              <SlideList
+                className="banner-main"
+                BannerName="App.MainSale"
+                autoplaySpeed={4500}
+              />
               <Suspense fallback={<div>Loading...</div>}>
                 <SlideList
                   containerClass="pl-15px pr-15px slider-hot"
@@ -196,7 +200,6 @@ export default class extends React.Component {
               <Suspense fallback={<div>Loading...</div>}>
                 <NewsList />
               </Suspense>
-              <button onClick={HIDE_STATUSBAR}>Hide</button>
             </div>
           </div>
         </div>

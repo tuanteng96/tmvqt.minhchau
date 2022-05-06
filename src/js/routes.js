@@ -43,7 +43,10 @@ import EmployeeServiceDetailPage from "../pages/employee/timeKeeping/employeeSer
 import EmployeeServiceDiaryPage from "../pages/employee/timeKeeping/employeeServiceDiary";
 import EmployeeServiceSchedulePage from "../pages/employee/timeKeeping/employeeServiceSchedule";
 import EmployeeStatisticalPage from "../pages/employee/statistical/employeeStatistical";
-import EmployeeReportPage from "../pages/employee/report/employeeReport";
+// Thống kê
+import ReportingDatePage from "../pages/report/ReportingDate";
+import ReportCustomerPage from "../pages/report/ReportCustomer";
+import ReportSellPage from "../pages/report/ReportSell";
 
 import SearchPage from "../pages/search/index";
 import NotFoundPage from '../pages/404.jsx';
@@ -165,7 +168,6 @@ var routes = [{
     },
     {
         path: '/shop/detail/:cateId',
-        async(routeTo, routeFrom, resolve, reject) {},
         asyncComponent: () => ShopDetailPage,
     },
     {
@@ -336,8 +338,22 @@ var routes = [{
         }
     },
     {
-        path: '/employee/report/', // Thống kê
-        asyncComponent: () => EmployeeReportPage,
+        path: '/report/date/', // Thống kê
+        asyncComponent: () => ReportingDatePage,
+        options: {
+            transition: 'f7-cover',
+        }
+    },
+    {
+        path: '/report/customer/', // Thống kê
+        asyncComponent: () => ReportCustomerPage,
+        options: {
+            transition: 'f7-cover',
+        }
+    },
+    {
+        path: '/report/sell/', // Thống kê
+        asyncComponent: () => ReportSellPage,
         options: {
             transition: 'f7-cover',
         }
