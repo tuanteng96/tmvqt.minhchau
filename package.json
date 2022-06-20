@@ -47,6 +47,7 @@
         "react-icons": "^4.1.0",
         "react-image-file-resizer": "^0.4.7",
         "react-infinite-scroll-component": "^6.1.0",
+        "react-iframe-comm": "^1.2.2",
         "react-loading-skeleton": "^2.1.1",
         "react-mobile-datepicker": "^4.0.2",
         "react-number-format": "^4.8.0",

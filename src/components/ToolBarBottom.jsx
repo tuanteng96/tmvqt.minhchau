@@ -17,6 +17,7 @@ export default class ToolBarCustom extends React.Component {
   componentDidMount() {
     var $$ = this.Dom7;
     $$(".js-link-home").addClass("js-active");
+    
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -30,7 +31,15 @@ export default class ToolBarCustom extends React.Component {
         if (href === "/") {
           $$(".js-link-home").addClass("js-active");
         }
-        if (hrefLink === href) {
+        //console.log(hrefLink);
+        //console.log(href);
+        if (
+          hrefLink === href ||
+          href
+            .split("/")
+            .filter((o) => o)
+            .some((x) => hrefLink.split("/").filter((k) => k).includes(x))
+        ) {
           _this.addClass("js-active");
         }
       });
@@ -39,11 +48,9 @@ export default class ToolBarCustom extends React.Component {
 
   checkTotal = () => {
     const TYPE = checkRole();
-    const infoUser = getUser();
-    const userRoles = infoUser?.GroupTitles;
 
     if (TYPE === "ADMIN") {
-      return 2;
+      return 3;
     }
     if (TYPE === "STAFF") {
       const arrType = [
@@ -106,7 +113,7 @@ export default class ToolBarCustom extends React.Component {
               icon="las la-chart-bar"
               text="Báo cáo"
               roles={["director"]}
-              href="/report/date/"
+              href="/report/"
             />
             <PrivateNav
               className="page-toolbar-bottom__link js-toolbar-link"
@@ -129,22 +136,22 @@ export default class ToolBarCustom extends React.Component {
         return (
           <React.Fragment>
             <PrivateNav
-              className="page-toolbar-bottom__link js-toolbar-link js-link-home"
+              className="page-toolbar-bottom__link js-toolbar-link"
               icon="las la-piggy-bank"
               text="Thống kê"
               roles={[]}
               href="/employee/statistical/"
             />
-            {/* <PrivateNav
+            <PrivateNav
               className="page-toolbar-bottom__link js-toolbar-link js-link-home"
               icon="las la-chart-bar"
               text="Báo cáo"
               roles={[]}
-              href="/report/date/"
-            /> */}
+              href="/report/"
+            />
             <Link
               noLinkClass
-              href="/profile/"
+              href="/detail-profile/"
               className={`page-toolbar-bottom__link js-toolbar-link ${TYPE}`}
             >
               <i className="las la-user-circle"></i>

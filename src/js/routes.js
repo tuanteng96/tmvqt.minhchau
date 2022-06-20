@@ -42,11 +42,13 @@ import EmployeeServicePage from "../pages/employee/timeKeeping/employeeService";
 import EmployeeServiceDetailPage from "../pages/employee/timeKeeping/employeeServiceDetail";
 import EmployeeServiceDiaryPage from "../pages/employee/timeKeeping/employeeServiceDiary";
 import EmployeeServiceSchedulePage from "../pages/employee/timeKeeping/employeeServiceSchedule";
+import EmployeeServiceHistoryPage from "../pages/employee/timeKeeping/employeeServiceHistory";
 import EmployeeStatisticalPage from "../pages/employee/statistical/employeeStatistical";
 // Thống kê
-import ReportingDatePage from "../pages/report/ReportingDate";
-import ReportCustomerPage from "../pages/report/ReportCustomer";
-import ReportSellPage from "../pages/report/ReportSell";
+import ReportPage from "../pages/report/index";
+
+// Pos bán hàng
+import PosPage from "../pages/pos/Pos"
 
 import SearchPage from "../pages/search/index";
 import NotFoundPage from '../pages/404.jsx';
@@ -73,7 +75,7 @@ const checkRouterHome = () => {
 
     if (ACC_TYPE === "U") {
         if (infoUser.ID === 1) {
-            return EmployeeStatisticalPage;
+            return ReportPage;
         } else {
             const groupRole = infoUser.GroupTitles;
             if (groupRole.includes("service")) {
@@ -331,6 +333,13 @@ var routes = [{
         }
     },
     {
+        path: '/employee/history/:orderItem/:memberId', // Nhân viên lịch sử
+        asyncComponent: () => EmployeeServiceHistoryPage,
+        options: {
+            transition: 'f7-cover',
+        }
+    },
+    {
         path: '/employee/statistical/', // Thống kê
         asyncComponent: () => EmployeeStatisticalPage,
         options: {
@@ -338,28 +347,63 @@ var routes = [{
         }
     },
     {
-        path: '/report/date/', // Thống kê
+        path: '/report/', // Báo cáo ngày
+        asyncComponent: () => ReportPage,
+        options: {
+            transition: 'f7-cover',
+        }
+    },
+    {
+        path: '/report/date/', // Báo cáo ngày
         asyncComponent: () => ReportingDatePage,
         options: {
             transition: 'f7-cover',
         }
     },
     {
-        path: '/report/customer/', // Thống kê
+        path: '/report/customer/', // Khách hàng
         asyncComponent: () => ReportCustomerPage,
         options: {
             transition: 'f7-cover',
         }
     },
     {
-        path: '/report/sell/', // Thống kê
+        path: '/report/sell/', // Bán hàng
         asyncComponent: () => ReportSellPage,
         options: {
             transition: 'f7-cover',
         }
     },
     {
-        path: '/search/', // Thống kê
+        path: '/report/services/', // Dịch vụ
+        asyncComponent: () => ReportServicesPage,
+        options: {
+            transition: 'f7-cover',
+        }
+    },
+    {
+        path: '/report/cash-book/', // Sổ quỹ
+        asyncComponent: () => ReportCashBookPage,
+        options: {
+            transition: 'f7-cover',
+        }
+    },
+    {
+        path: '/report/monthly/', // Thu chi
+        asyncComponent: () => ReportMonthlyPage,
+        options: {
+            transition: 'f7-cover',
+        }
+    },
+    {
+        path: '/pos/', // Pos bán hàng
+        asyncComponent: () => PosPage,
+        options: {
+            transition: 'f7-cover',
+        }
+    },
+    {
+        path: '/search/',
         asyncComponent: () => SearchPage,
     },
     {

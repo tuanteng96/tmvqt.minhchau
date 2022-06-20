@@ -107,6 +107,11 @@ export default class employeeService extends React.Component {
   handleSchedule = (item) => {
     this.$f7router.navigate("/employee/schedule/" + item.OrderItemID + "/");
   };
+  handleHistory = (item) => {
+    this.$f7router.navigate(
+      "/employee/history/" + item.OrderItemID + "/" + item.MemberID + "/"
+    );
+  };
 
   handleClickSv = (item) => {
     this.refs.actionService.open();
@@ -288,6 +293,11 @@ export default class employeeService extends React.Component {
                           >
                             Lịch trình
                           </ActionsButton>
+                          <ActionsButton
+                            onClick={() => this.handleHistory(item)}
+                          >
+                            Lịch sử khách hàng
+                          </ActionsButton>
                         </ActionsGroup>
                         <ActionsGroup>
                           <ActionsButton color="red">Đóng</ActionsButton>
@@ -340,6 +350,7 @@ export default class employeeService extends React.Component {
                         rangePicker: true,
                         footer: true,
                         toolbarCloseText: "Xác nhận",
+                        backdrop: true,
                       }}
                       clearButton
                       onCalendarChange={this.onChangeDateS}
